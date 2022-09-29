@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  rust-server:
+    container_name: rust-server
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "3030:3030"
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # environment:
+    #   - CARGO_INCREMENTAL=1
