@@ -1,4 +1,6 @@
+use std::io::{Error, ErrorKind};
 use std::str;
+use std::str::FromStr;
 
 // ch02/src/main.rs
 #[warn(dead_code)]
@@ -24,6 +26,17 @@ impl Question {
     }
 }
 
+impl FromStr for QuestionId {
+    type Err = std::io::Error;
+
+    fn from_str(id: &str) -> Result<Self, Self::Err> {
+        match id.is_empty() {
+            false => Ok(QuestionId(id.to_string())),
+            true => Err(Error::new(ErrorKind::InvalidInput, "No id provided")),
+        }
+    }
+}
+
 fn main() {
     let address = String::from("Street 1");
 
@@ -36,7 +49,7 @@ fn main() {
         address
     }
     let question = Question::new(
-        QuestionId("1".to_string()),
+        QuestionId::from_str("1").expect("No id provided"),
         "First Question".to_string(),
         "Content of question".to_string(),
         Some(vec!["faq".to_string()]),
