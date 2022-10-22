@@ -45,11 +45,29 @@ use yew::prelude::*;
 //     yew::start_app::<Model>();
 // }
 
+#[derive(Clone, PartialEq)]
 struct Video {
     id: usize,
     title: String,
     speaker: String,
     url: String,
+}
+
+#[derive(Properties, PartialEq)]
+struct VideosListProps {
+    videos: Vec<Video>,
+}
+
+#[function_component(VideosList)]
+fn videos_list(VideosListProps { videos }: &VideosListProps) -> Html {
+    videos
+        .iter()
+        .map(|video| {
+            html! {
+                <p>{format!("{}: {}", video.speaker, video.title)}</p>
+            }
+        })
+        .collect()
 }
 
 #[function_component(App)]
@@ -81,21 +99,22 @@ fn app() -> Html {
         },
     ];
 
-    let videos = videos
-        .iter()
-        .map(|video| {
-            html! {
-                <p>{format!("{}: {}", video.speaker, video.title)}</p>
-            }
-        })
-        .collect::<Html>();
+    // let videos = videos
+    //     .iter()
+    //     .map(|video| {
+    //         html! {
+    //             <p>{format!("{}: {}", video.speaker, video.title)}</p>
+    //         }
+    //     })
+    //     .collect::<Html>();
 
     html! {
         <>
             <h1>{"Hello world"}</h1>
             <div>
                 <h3>
-                    {videos}
+                    // {videos}
+                    <VideosList videos={videos} />
                 </h3>
             </div>
         </>
