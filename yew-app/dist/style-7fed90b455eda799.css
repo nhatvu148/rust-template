@@ -26,3 +26,32 @@
   background: rgb(36, 36, 36);
   cursor: pointer;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.consumer {
+  background-color: #0057b7;
+  padding: 10px;
+}
+
+.producer {
+  background-color: #ffd700;
+  padding: 10px;
+}
+
+.consumer > h3 {
+  color: white;
+}
+
+#webcam {
+  width: 100%;
+  height: 100%;
+}
+
+#render {
+  width: 100%;
+  height: 100%;
+}

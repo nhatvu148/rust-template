@@ -551,8 +551,11 @@ name = "yew-app"
 version = "0.1.0"
 dependencies = [
  "gloo-net",
+ "js-sys",
  "serde",
+ "wasm-bindgen",
  "wasm-bindgen-futures",
+ "web-sys",
  "yew",
  "yew-router",
 ]

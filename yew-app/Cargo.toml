@@ -7,7 +7,41 @@ version = "0.1.0"
 
 [dependencies]
 gloo-net = "0.2"
+js-sys = "0.3"
 serde = {version = "1.0", features = ["derive"]}
-wasm-bindgen-futures = "0.4"
+wasm-bindgen = {version = "0.2.81", features = ["serde-serialize"]}
+wasm-bindgen-futures = "0.4.30"
 yew = "0.19.3"
 yew-router = "0.16.0"
+
+[dependencies.web-sys]
+features = [
+  "console",
+  "CanvasRenderingContext2d",
+  "EncodedVideoChunk",
+  "EncodedVideoChunkInit",
+  "EncodedVideoChunkType",
+  "HtmlCanvasElement",
+  "HtmlImageElement",
+  "Navigator",
+  "MediaDevices",
+  "MediaStream",
+  "MediaStreamTrack",
+  "MediaTrackSettings",
+  "MediaStreamTrackProcessor",
+  "MediaStreamTrackProcessorInit",
+  "HtmlVideoElement",
+  "MediaStreamConstraints",
+  "ReadableStream",
+  "ReadableStreamGetReaderOptions",
+  "ReadableStreamDefaultReader",
+  "VideoEncoder",
+  "VideoEncoderInit",
+  "VideoEncoderConfig",
+  "VideoFrame",
+  "VideoTrack",
+  "VideoDecoder",
+  "VideoDecoderConfig",
+  "VideoDecoderInit",
+]
+version = "0.3.58"

@@ -6,6 +6,7 @@ mod pages;
 use pages::counter::Counter;
 use pages::home::Home;
 use pages::video::Videos;
+use pages::webcam::Webcam;
 
 #[derive(Debug, Clone, Copy, PartialEq, Routable)]
 pub enum Route {
@@ -15,6 +16,8 @@ pub enum Route {
     Counter,
     #[at("/videos")]
     Videos,
+    #[at("/webcam")]
+    Webcam,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -105,6 +108,9 @@ impl App {
                                 <Link<Route> classes={classes!("navbar-item")} to={Route::Videos}>
                                     { "See the videos" }
                                 </Link<Route>>
+                                <Link<Route> classes={classes!("navbar-item")} to={Route::Webcam}>
+                                    { "See the webcam" }
+                                </Link<Route>>
                             </div>
                         </div>
                     </div>
@@ -124,6 +130,9 @@ fn switch(routes: &Route) -> Html {
         }
         Route::Videos => {
             html! { <Videos /> }
+        }
+        Route::Webcam => {
+            html! { <Webcam /> }
         }
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
